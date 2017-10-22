@@ -1,33 +1,72 @@
+<head>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+</head>
+
 <html>
-  <div onclick="getLocationOfMouse();" class="line">
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
-    <div onclick="colorNote(this)" class="miniline"></div>
+
+  <div class="assembly" id="AssemblyOne">
+      <div class="string" id="StringOne">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+          </div>
+          <div onclick="getLocationOfMouse();" class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+      <div class="string" id="StringTwo">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline"></div>
+          </div>
+          <div onclick="getLocationOfMouse();" class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
   </div>
-  <div onclick="getLocationOfMouse();" class="note-names">
-    <div class="note-name">A</div>
-    <div class="note-name">A#</div>
-    <div class="note-name">B</div>
-    <div class="note-name">C</div>
-    <div class="note-name">C#</div>
-    <div class="note-name">D</div>
-    <div class="note-name">D#</div>
-    <div class="note-name">E</div>
-    <div class="note-name">F</div>
-    <div class="note-name">F#</div>
-    <div class="note-name">G</div>
-    <div class="note-name">G#</div>
-  </div>
-</html>
+  
 
 <style>
   .line {
@@ -60,24 +99,62 @@
 </style>
 
 <script>
+ 
+  let config = {
+    apiKey:"AIzaSyDHj_7fVoxUn1971ZGFYQLbl88cReeqI9E",
+    authDomain: "hurdy-gurdy.firebaseapp.com",
+    databaseURL:"https://hurdy-gurdy.firebaseio.com",
+  };
+  firebase.initializeApp(config);
+  let database = firebase.database();
+
   let lastClicked;
-  let currentClicked;
+  let note;
 
   function colorNote(obj) {
     if (lastClicked !== undefined ) {
       lastClicked.style.backgroundColor = "black";
     }
     lastClicked = obj;
-    obj.style.backgroundColor = "blue";
+    if (lastClicked !== undefined ) {
+      obj.style.backgroundColor = "blue";
+    }
   }
 
   function getLocationOfMouse(event) {
-    event=window.event;
+    //event = event || window.event;
     let x = event.clientX;
     let fraction = ((x - (window.innerWidth * 0.05))/(window.innerWidth * 0.9));
-    let newNote = Math.floor((fraction * 12));
-    console.log("New Note = " + newNote)
+    note = Math.floor((fraction * 12));
+    console.log("New Note = " + note);
   }
 
+  function noteStart(miniline){
+
+    let assembly = miniline.parentNode.parentNode.parentNode.id;
+    let str = miniline.parentNode.parentNode.id;
+
+    console.log(assembly);
+    console.log(str);
+
+    database.ref(assembly).set({
+        str: 'a',
+        note: 'b',
+        active: true
+      });
+  }
+
+
+  function noteStop(miniline){
+
+    let assembly = miniline.parentNode.parentNode.parentNode.id;
+    let str = miniline.parentNode.parentNode.id;
+
+    database.ref(assembly).set({
+        str: "",
+        note: "",
+        active: false
+      });
+  }
 
 </script>
