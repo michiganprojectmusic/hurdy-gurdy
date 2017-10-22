@@ -1,5 +1,31 @@
 <html>
   <div onclick="getLocationOfMouse();" class="line">
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+    <div onclick="colorNote(this)" class="miniline"></div>
+  </div>
+  <div onclick="getLocationOfMouse();" class="note-names">
+    <div class="note-name">A</div>
+    <div class="note-name">A#</div>
+    <div class="note-name">B</div>
+    <div class="note-name">C</div>
+    <div class="note-name">C#</div>
+    <div class="note-name">D</div>
+    <div class="note-name">D#</div>
+    <div class="note-name">E</div>
+    <div class="note-name">F</div>
+    <div class="note-name">F#</div>
+    <div class="note-name">G</div>
+    <div class="note-name">G#</div>
   </div>
 </html>
 
@@ -8,19 +34,50 @@
     margin-left:auto;
     margin-right:auto;
     margin-top:100px;
-    background-color:black;
     width:90%;
-    height:10px;
+    height:20px;
     border-radius:50px;
+  }
+  .miniline {
+    display:inline-flex;
+    background-color:black;
+    width:7.9%;
+    height:20px;
+  }
+  .note-names {
+    margin-left:auto;
+    margin-right:auto;
+    width:90%;
+    margin-top:10px;
+  }
+  .note-name {
+    text-align:center;
+    font-family:sans-serif;
+    font-size:20px;
+    display:inline-block;
+    width:7.9%;
   }
 </style>
 
 <script>
+  let lastClicked;
+  let currentClicked;
+
+  function colorNote(obj) {
+    if (lastClicked !== undefined ) {
+      lastClicked.style.backgroundColor = "black";
+    }
+    lastClicked = obj;
+    obj.style.backgroundColor = "blue";
+  }
+
   function getLocationOfMouse(event) {
     event=window.event;
     let x = event.clientX;
     let fraction = ((x - (window.innerWidth * 0.05))/(window.innerWidth * 0.9));
-    console.log("fraction = " + fraction)
-
+    let newNote = Math.floor((fraction * 12));
+    console.log("New Note = " + newNote)
   }
+
+
 </script>
