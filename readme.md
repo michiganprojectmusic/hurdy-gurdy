@@ -2,7 +2,7 @@
 https://hurdy-gurdy.firebaseio.com/<br>
 Public-facing Name: project-973760124548<br>
 Project ID: hurdy-gurdy<br>
-Web API Key:AIzaSyDHj_7fVoxUn1971ZGFYQLbl88cReeqI9E<br>
+Web API Key: AIzaSyDHj_7fVoxUn1971ZGFYQLbl88cReeqI9E<br><br>
 
 >let config = {<br>
   apiKey:"AIzaSyDHj_7fVoxUn1971ZGFYQLbl88cReeqI9E",<br>
