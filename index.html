@@ -138,8 +138,8 @@
     console.log(str);
 
     database.ref(assembly).set({
-        str: str,
-        note: note,
+        str: "" + str,
+        note: "" + note,
         active: true
       });
   }
