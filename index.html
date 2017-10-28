@@ -1,9 +1,23 @@
 <head>
     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+	   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 
 <html>
 
+  <div id="login">
+    <div id="login-wrapper">
+      <input id="name" placeholder="Enter your name">
+      <select id="assemblyValue">
+        <option value="Observe">Observe</option>
+        <option value="AssemblyOne">1</option>
+        <option value="AssemblyTwo">2</option>
+        <option value="AssemblyThree">3</option>
+        <option value="AssemblyFour">4</option>
+      </select>
+      <button id="submit" onclick="selectString();">Submit</button>
+    </div>
+  </div>
   <div class="assembly" id="AssemblyOne">
       <div class="string" id="StringOne">
           <div class="line">
@@ -66,40 +80,273 @@
           </div>
       </div>
   </div>
-  
+  <div class="assembly" id="AssemblyTwo">
+      <div class="string" id="StringOne">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+      <div class="string" id="StringTwo">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+  </div>
+  <div class="assembly" id="AssemblyThree">
+      <div class="string" id="StringOne">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+      <div class="string" id="StringTwo">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+  </div>
+  <div class="assembly" id="AssemblyFour">
+      <div class="string" id="StringOne">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+      <div class="string" id="StringTwo">
+          <div class="line">
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '1'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '2'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '3'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '4'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '5'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '6'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '7'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '8'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '9'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '10'></div>
+              <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '11'></div>
+          </div>
+          <div class="note-names">
+              <div class="note-name">A</div>
+              <div class="note-name">A#</div>
+              <div class="note-name">B</div>
+              <div class="note-name">C</div>
+              <div class="note-name">C#</div>
+              <div class="note-name">D</div>
+              <div class="note-name">D#</div>
+              <div class="note-name">E</div>
+              <div class="note-name">F</div>
+              <div class="note-name">F#</div>
+              <div class="note-name">G</div>
+              <div class="note-name">G#</div>
+          </div>
+      </div>
+  </div>
 
 <style>
+  html {
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
   .line {
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:100px;
-    width:90%;
-    height:20px;
-    border-radius:50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 90%;
+    height: 20px;
+    border-radius: 50px;
   }
+
   .miniline {
-    display:inline-flex;
-    background-color:black;
-    width:7.9%;
-    height:20px;
+    display: inline-flex;
+    background-color: #8c8c8c;
+    width: 7.9%;
+    height: 20px;
   }
+
+  .minilineCollapse {
+    width: 7.4% !important;
+  }
+
   .note-names {
-    margin-left:auto;
-    margin-right:auto;
-    width:90%;
-    margin-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin-top: 5px;
   }
+
   .note-name {
-    text-align:center;
-    font-family:sans-serif;
-    font-size:20px;
-    display:inline-block;
-    width:7.9%;
+    text-align: center;
+    font-size: 20px;
+    display: inline-block;
+    width: 7.9%;
+  }
+
+  .note-nameCollapse {
+    width: 7.4% !important;
+  }
+
+  .assembly {
+    width: 50%;
+  }
+
+  #AssemblyOne,
+  #AssemblyTwo {
+    float: left;
+  }
+
+  #AssemblyThree,
+  #AssemblyFour {
+    float: right;
+  }
+
+  #login {
+    width: 100%;
+  }
+
+  #login-wrapper {
+    display:table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #Name, #Submit, #AssemblyValue {
+    height:30px;
+    border-radius:10px;
+    padding:5px;
+    margin:3px;
+    color: #4680ff;
+    background: rgba(0, 0, 0, 0);
+    border: solid 2px #4680ff;
   }
 </style>
 
 <script>
- 
+
   let config = {
     apiKey:"AIzaSyDHj_7fVoxUn1971ZGFYQLbl88cReeqI9E",
     authDomain: "hurdy-gurdy.firebaseapp.com",
@@ -109,16 +356,61 @@
   let database = firebase.database();
 
   let lastClicked;
+	let currentAssembly = "Observe";
 
   function colorNote(obj) {
-    if (lastClicked !== undefined ) {
-      lastClicked.style.backgroundColor = "black";
-    }
-    lastClicked = obj;
-    if (lastClicked !== undefined ) {
-      obj.style.backgroundColor = "blue";
-    }
-  }
+		if (currentAssembly === "Observe") return;
+		if (lastClicked !== undefined) {
+			lastClicked.style.backgroundColor = "#8c8c8c";
+		}
+		lastClicked = obj;
+		obj.style.backgroundColor = "#4680ff";
+	}
+
+  function selectString() {
+		let selection = document.getElementById("assemblyValue");
+		currentAssembly = selection.options[selection.selectedIndex].value;
+		name = document.getElementById("name").value;
+
+		if (currentAssembly !== "Observe") {
+			let lines = document.getElementsByClassName("miniline");
+			let noteNames = document.getElementsByClassName("note-name");
+			let assemblies = document.getElementsByClassName("assembly");
+
+			for (let i = 0; i < lines.length; i++) {
+				lines[i].classList.remove("minilineCollapse");
+			}
+
+			for (let i = 0; i < noteNames.length; i++) {
+				noteNames[i].classList.remove("note-nameCollapse");
+			}
+			for (let i = 0; i < assemblies.length; i++) {
+				if (assemblies[i].id !== currentAssembly) {
+					assemblies[i].style.display = "none";
+				} else {
+					assemblies[i].style.display = "block";
+					assemblies[i].style.width = "100%";
+				}
+			}
+		} else {
+			lastClicked.style.backgroundColor = "#8c8c8c";
+			let lines = document.getElementsByClassName("miniline");
+			let noteNames = document.getElementsByClassName("note-name");
+			let assemblies = document.getElementsByClassName("assembly");
+
+			for (let i = 0; i < lines.length; i++) {
+				lines[i].classList.add("minilineCollapse");
+			}
+
+			for (let i = 0; i < noteNames.length; i++) {
+				noteNames[i].classList.add("note-nameCollapse");
+			}
+			for (let i = 0; i < assemblies.length; i++) {
+				assemblies[i].style.display = "block"
+				assemblies[i].style.width = "50%"
+			}
+		}
+	}
 
   function noteStart(miniline){
 
