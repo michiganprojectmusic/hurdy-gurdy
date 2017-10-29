@@ -359,13 +359,15 @@
 	let currentAssembly = "Observe";
 
   function colorNote(obj) {
-		if (currentAssembly === "Observe") return;
-		if (lastClicked !== undefined) {
-			lastClicked.style.backgroundColor = "#8c8c8c";
-		}
-		lastClicked = obj;
-		obj.style.backgroundColor = "#4680ff";
-	}
+    if (currentAssembly === "Observe") return;
+    if (lastClicked !== undefined ) {
+      lastClicked.style.backgroundColor = "#8c8c8c";
+    }
+    lastClicked = obj;
+    if (lastClicked !== undefined ) {
+      obj.style.backgroundColor = "#4680ff";
+    }
+  }
 
   function selectString() {
 		let selection = document.getElementById("assemblyValue");
