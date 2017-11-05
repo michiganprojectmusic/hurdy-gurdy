@@ -142,7 +142,7 @@
           </div>
       </div>
   </div>
-  <div class="assembly" id="AssemblyThree">
+  <div class="assembly" id="AssemblyFour">
       <div class="string" id="StringOne">
           <div class="line">
               <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
@@ -204,7 +204,7 @@
           </div>
       </div>
   </div>
-  <div class="assembly" id="AssemblyFour">
+  <div class="assembly" id="AssemblyThree">
       <div class="string" id="StringOne">
           <div class="line">
               <div onmousedown="colorNote(this);noteStart(this)" onmouseup="colorNote(undefined);noteStop(this)" class="miniline" id = '0'></div>
@@ -369,6 +369,75 @@
     }
   }
 
+  let lastNotes = [
+    {"AssemblyOne": undefined},
+    {"AssemblyTwo": undefined},
+    {"AssemblyThree": undefined},
+    {"AssemblyFour": undefined}
+
+  ];
+
+  function colorNoteObserve(assemblyName, stringNumber, noteNumber, color) {
+    let note  = document.getElementById(assemblyName).children[stringNumber].children[0].children[noteNumber];
+    if (lastNotes[assemblyName] !== undefined) {
+      lastNotes[assemblyName].style.backgroundColor = "#8c8c8c";
+    }
+    lastNotes[assemblyName] = note;
+    note.style.backgroundColor = color;
+  }
+
+  var thing = database.ref('/');
+  thing.on('value', function(snapshot) {
+    if (snapshot.val()["AssemblyOne"].active === true) {
+      let stringNumber;
+      if (snapshot.val()["AssemblyOne"].str == "StringOne") stringNumber = 0;
+      else if (snapshot.val()["AssemblyOne"].str == "StringTwo") stringNumber = 1;
+
+      colorNoteObserve("AssemblyOne", stringNumber, snapshot.val()["AssemblyOne"].note, "#4680ff")
+    }
+    else {
+      if (lastNotes["AssemblyOne"] !== undefined) {
+          lastNotes["AssemblyOne"].style.backgroundColor = "#8c8c8c";
+      }
+    }
+    if (snapshot.val()["AssemblyTwo"].active === true) {
+        let stringNumber;
+        if (snapshot.val()["AssemblyTwo"].str == "StringOne") stringNumber = 0;
+        else if (snapshot.val()["AssemblyTwo"].str == "StringTwo") stringNumber = 1;
+
+        colorNoteObserve("AssemblyTwo", stringNumber, snapshot.val()["AssemblyTwo"].note, "#4680ff");
+    }
+    else {
+      if (lastNotes["AssemblyTwo"] !== undefined) {
+          lastNotes["AssemblyTwo"].style.backgroundColor = "#8c8c8c";
+      }
+    }
+    if (snapshot.val()["AssemblyThree"].active === true) {
+        let stringNumber;
+        if (snapshot.val()["AssemblyThree"].str == "StringOne") stringNumber = 0;
+        else if (snapshot.val()["AssemblyThree"].str == "StringTwo") stringNumber = 1;
+
+        colorNoteObserve("AssemblyThree", stringNumber, snapshot.val()["AssemblyThree"].note, "#4680ff");
+    }
+    else {
+      if (lastNotes["AssemblyThree"] !== undefined) {
+          lastNotes["AssemblyThree"].style.backgroundColor = "#8c8c8c";
+      }
+    }
+    if (snapshot.val()["AssemblyFour"].active === true) {
+        let stringNumber;
+        if (snapshot.val()["AssemblyFour"].str == "StringOne") stringNumber = 0;
+        else if (snapshot.val()["AssemblyFour"].str == "StringTwo") stringNumber = 1;
+
+        colorNoteObserve("AssemblyFour", stringNumber, snapshot.val()["AssemblyFour"].note, "#4680ff");
+    }
+    else {
+      if (lastNotes["AssemblyFour"] !== undefined) {
+          lastNotes["AssemblyFour"].style.backgroundColor = "#8c8c8c";
+      }
+    }
+  });
+
   function selectString() {
 		let selection = document.getElementById("assemblyValue");
 		currentAssembly = selection.options[selection.selectedIndex].value;
@@ -415,7 +484,7 @@
 	}
 
   function noteStart(miniline){
-
+    if (currentAssembly === "Observe") return;
     let assembly = miniline.parentNode.parentNode.parentNode.id;
     let str = miniline.parentNode.parentNode.id;
     let note = miniline.id;
@@ -433,13 +502,14 @@
 
 
   function noteStop(miniline){
-
+    if (currentAssembly === "Observe") return;
     let assembly = miniline.parentNode.parentNode.parentNode.id;
     let str = miniline.parentNode.parentNode.id;
+    let note = miniline.id;
 
     database.ref(assembly).set({
-        str: "",
-        note: "",
+        str: str,
+        note: note,
         active: false
       });
   }
