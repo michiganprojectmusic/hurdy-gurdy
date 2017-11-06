@@ -10,4 +10,11 @@ Arduino Firebase Demo: https://github.com/firebase/firebase-arduino/tree/master/
   authDomain: "hurdy-gurdy.firebaseapp.com",<br>
   databaseURL:"https://hurdy-gurdy.firebaseio.com",<br>
 };<br>
-firebase.initializeApp(config);
+firebase.initializeApp(config);<br><br>
+
+<h3>Arduino Setup:</h3><br>
+https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/setup<br>
+Paste "https://adafruit.github.io/arduino-board-index/package_adafruit_index.json" to Preferences/Additional Boards Manager URLs<br>
+Install adafruit SAMD boards via Boards Manager<br>
+Install Arduino SAMD boards via Boards Manager<br>
+Select Appropriate Board and Port<br>
