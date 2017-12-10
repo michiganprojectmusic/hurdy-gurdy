@@ -1,32 +1,13 @@
-/*
-  Web client
-
- This sketch connects to a website (http://www.google.com)
- using a WiFi shield.
-
- This example is written for a network using WPA encryption. For
- WEP or WPA, change the WiFi.begin() call accordingly.
-
- This example is written for a network using WPA encryption. For
- WEP or WPA, change the WiFi.begin() call accordingly.
-
- Circuit:
- * WiFi shield attached
-
- created 13 July 2010
- by dlf (Metodo2 srl)
- modified 31 May 2012
- by Tom Igoe
- */
-
-
 #include <SPI.h>
 #include <WiFi101.h>
 #include "arduino_secrets.h" 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = "projectmusic";        // your network SSID (name)
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
+unsigned long lastConnectionTime = 0;            // last time you connected to the server, in milliseconds
+const unsigned long postingInterval = 100; // delay between updates, in milliseconds
 
+WiFiSSLClient client;
 int status = WL_IDLE_STATUS;
 // if you don't want to use DNS (and reduce your sketch size)
 // use the numeric IP instead of the name for the server:
@@ -78,22 +59,19 @@ void setup() {
 }
 
 void loop() {
-  // if there are incoming bytes available
-  // from the server, read them and print them:
-  while (true) {
-    WiFiSSLClient client;
-    client.flush();
-    client.connect(server, 443);
-    client.println("GET /AssemblyFour.json HTTP/1.1");
-    client.println("Host: hurdy-gurdy.firebaseio.com");
-    client.println("Connection: close");
-    client.println();
-    while (client.available()) {
-      int c = client.read();
-      Serial.write(char(c));
-    }
+  // if there's incoming data from the net connection.
+  // send it out the serial port.  This is for debugging
+  // purposes only:
+  while (client.available()) {
+    char c = client.read();
+    Serial.write(c);
   }
-  Serial.println("OUT OF LOOP");
+
+  // if ten seconds have passed since your last connection,
+  // then connect again and send data:
+  if (millis() - lastConnectionTime > postingInterval) {
+    httpRequest();
+  }
 
 }
 
@@ -115,6 +93,29 @@ void printWiFiStatus() {
   Serial.println(" dBm");
 }
 
+// this method makes a HTTP connection to the server:
+void httpRequest() {
+  // close any connection before send a new request.
+  // This will free the socket on the WiFi shield
+  client.stop();
+
+  // if there's a successful connection:
+  if (client.connect(server, 443)) {
+    Serial.println("connecting...");
+    // send the HTTP PUT request:
+      client.println("GET /AssemblyFour.json HTTP/1.1");
+      client.println("Host: hurdy-gurdy.firebaseio.com");
+      client.println("Connection: close");
+      client.println();
+
+    // note the time that the connection was made:
+    lastConnectionTime = millis();
+  }
+  else {
+    // if you couldn't make a connection:
+    Serial.println("connection failed");
+  }
+}
 
 
 
