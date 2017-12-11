@@ -3,9 +3,15 @@
 #include "arduino_secrets.h" 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = "projectmusic";        // your network SSID (name)
+//char password[] = "NotStricklandsLiquor1";
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 unsigned long lastConnectionTime = 0;            // last time you connected to the server, in milliseconds
-const unsigned long postingInterval = 100; // delay between updates, in milliseconds
+const unsigned long postingInterval = 1000; // delay between updates, in milliseconds
+String json = "";
+boolean startReading;
+bool active = false;
+int note_num = -1;
+String string_num = "";
 
 WiFiSSLClient client;
 int status = WL_IDLE_STATUS;
@@ -56,6 +62,7 @@ void setup() {
     client.println("Connection: close");
     client.println();
   }*/
+  httpRequest();
 }
 
 void loop() {
@@ -64,14 +71,35 @@ void loop() {
   // purposes only:
   while (client.available()) {
     char c = client.read();
-    Serial.write(c);
+    if (c == '{') {
+      json = "";
+      startReading = true;
+    }
+    if (startReading == true) {
+      json += c;
+    }
+    //Serial.write(c);
+    if (c == '}') {
+      Serial.println(json);
+      startReading = false;
+      json_parse(json);
+      Serial.println(active);
+      Serial.println(note_num);
+      Serial.println(string_num);
+      httpRequest();
+      
+      break;
+
+
+      
+    }
   }
 
   // if ten seconds have passed since your last connection,
   // then connect again and send data:
-  if (millis() - lastConnectionTime > postingInterval) {
-    httpRequest();
-  }
+  //if (millis() - lastConnectionTime > postingInterval) {
+    //httpRequest();
+  //}
 
 }
 
@@ -114,6 +142,43 @@ void httpRequest() {
   else {
     // if you couldn't make a connection:
     Serial.println("connection failed");
+  }
+}
+
+void json_parse(String json){
+  int colonCount = 0;
+  for(int i = 0; i < json.length(); ++i) {
+    if(json[i] == ':'){
+      
+      if(colonCount == 0) {
+        if(json[i + 1] == 't') {
+          active = true;
+        }
+        else if(json[i + 1] == 'f') {
+          active = false;        
+        }
+      }
+      
+      else if (colonCount == 1) {
+        i += 2;
+        String numberSubstring = "";
+        while (json[i] != '"') {
+          numberSubstring += json[i];
+          ++i;
+        }
+        note_num = numberSubstring.toInt();
+      }
+  
+      else if (colonCount == 2) {
+        i += 2;
+        string_num = "";
+        while (json[i] != '"') {
+          string_num += json[i];
+          ++i;
+        }
+      }
+      ++colonCount;    
+    }
   }
 }
 
